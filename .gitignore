@@ -1,0 +1,4 @@
+# Ignore Python stuff
+env/*
+__pycache__/*
+*.py[cod]
