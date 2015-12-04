@@ -1,4 +1,11 @@
-# Ignore Python stuff
+# Python non-code objects
 env/*
 __pycache__/*
 *.py[cod]
+/dist/
+/*.egg-info
+
+# Documentation Artifacts
+_build/*
+_static/*
+_templates/*

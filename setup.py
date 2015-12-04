@@ -21,9 +21,14 @@ tests_require = [
     'mock>=1.0.1',
     'nose>=1.3.0'
 ]
+docs_require = [
+    'Sphinx>=1.2.2',
+    'sphinx_rtd_theme'
+]
 extras_require = {
     'test': tests_require,
     'packaging': ['wheel'],
+    'docs': docs_require,
 }
 
 everything = set(install_requires)
