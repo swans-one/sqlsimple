@@ -2,6 +2,8 @@ from collections import OrderedDict
 from sys import argv
 import argparse
 
+from sqlsimple.configuration import CONFIGURATION
+
 
 def sqlsimple():
     commands = OrderedDict([
@@ -34,6 +36,7 @@ def help_text(commands):
 def update_db(args):
     with open('schema.sql') as f:
         print(f.readlines())
+    print(CONFIGURATION['databases']['default']['name'])
 
 
 def init(args):

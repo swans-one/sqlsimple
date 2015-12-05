@@ -9,15 +9,15 @@ def get_and_parse_config():
     config_dict = {
         'databases': {},
     }
-    for db_name, config in db_config:
+    for db_name, config in db_config.items():
         config_dict['databases'][db_name] = {
-            'engine': config.get('engine', 'sqlite3')
-            'name': config.get('name')
-            'user': config.get('user')
-            'password': config.get('password')
-            'host': config.get('host')
-            'port': config.get('port')
-        })
+            'engine': config.get('engine', 'sqlite3'),
+            'name': config.get('name'),
+            'user': config.get('user'),
+            'password': config.get('password'),
+            'host': config.get('host'),
+            'port': config.get('port'),
+        }
     return config_dict
 
 
