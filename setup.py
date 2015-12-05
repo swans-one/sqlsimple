@@ -46,6 +46,11 @@ setup(
     author_email='theerikswanson@gmail.comcom',
     keywords='',
     packages=find_packages(),
+    entry_points={
+        'console_scripts': [
+            'sqlsimple = sqlsimple.tools:sqlsimple',
+        ],
+    },
     classifiers=[
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3.4',
