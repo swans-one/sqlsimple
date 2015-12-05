@@ -32,7 +32,8 @@ def help_text(commands):
 
 
 def update_db(args):
-    pass
+    with open('schema.sql') as f:
+        print(f.readlines())
 
 
 def init(args):
