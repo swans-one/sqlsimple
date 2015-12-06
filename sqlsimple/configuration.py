@@ -1,3 +1,4 @@
+from importlib import import_module
 import configparser
 import os
 
@@ -12,12 +13,19 @@ def get_and_parse_config():
     for db_name, config in db_config.items():
         config_dict['databases'][db_name] = {
             'engine': config.get('engine', 'sqlite3'),
-            'name': config.get('name'),
+            'database': config.get('name'),
             'user': config.get('user'),
             'password': config.get('password'),
             'host': config.get('host'),
             'port': config.get('port'),
         }
+        db_dict = config_dict['databases'][db_name]
+        try:
+            db_dict['db_api_module'] = import_module(db_dict['engine'])
+        except ImportError:
+            msg = ('Engine: "{e}" in config for database "{db}"'
+                   ' is not an installed module.')
+            raise ImportError(msg.format(e=db_dict['engine'], db=db_name))
     return config_dict
 
 
