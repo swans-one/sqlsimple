@@ -3,6 +3,7 @@ from sys import argv
 import argparse
 
 from sqlsimple.configuration import CONFIGURATION
+from sqlsimple.operations import sql_exec
 
 
 def sqlsimple():
@@ -41,28 +42,36 @@ def help_text(commands, args):
 
 
 class SqlSimpleCommand(object):
-    parser = argparse.ArgumentParser()
-
     def help_text(self):
         self.parser.print_help()
 
 
 class InitDb(SqlSimpleCommand):
-    def __init__(self):
-        self.parser.add_argument('database')
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--database', required=False)
 
-    def __call__(self):
+    def __call__(self, args):
+        args = vars(self.parser.parse_args(args))
         with open('schema.sql') as f:
             sql = f.read()
-        return sql_exec(sql)
+        return sql_exec(sql, db=args['database'])
+
+
+class Init(SqlSimpleCommand):
+    parser = argparse.ArgumentParser()
+
+    def __call__(self, args):
+        pass
+
+
+class MakeMigration(SqlSimpleCommand):
+    parser = argparse.ArgumentParser()
+    parser.add_argument('database')
+
+    def __call__(self, args):
+        pass
 
 
 init_db = InitDb()
-
-
-def init(args):
-    pass
-
-
-def make_migration(args):
-    pass
+init = Init()
+make_migration = MakeMigration()
