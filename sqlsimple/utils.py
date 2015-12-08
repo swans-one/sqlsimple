@@ -4,11 +4,17 @@ from sqlsimple.configuration import CONFIGURATION
 
 
 def run_sql_query(sql, db):
-    pass
+    db_config = CONFIGURATION['databases'][db]
+    with get_cursor(db_config) as c:
+        results = c.fetchall(sql)
+    return results
 
 
 def run_sql_exec(sql, db):
-    pass
+    db_config = CONFIGURATION['databases'][db]
+    with get_cursor(db_config) as c:
+        results = c.execute(sql)
+    return results
 
 
 @contextmanager
