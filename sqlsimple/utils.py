@@ -24,7 +24,7 @@ def get_cursor(db_config):
     possible_connection_params = [
         'database', 'user', 'password', 'host', 'port'
     ]
-    kwargs = {k, db_config[k]
+    kwargs = {k: db_config[k]
               for k in possible_connection_params
               if db_config[k] is not None}
     connection = db_config['db_api_module'].connect(**kwargs)

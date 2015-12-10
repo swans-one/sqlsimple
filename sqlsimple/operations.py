@@ -1,3 +1,6 @@
+from sqlsimple.utils import run_sql_query, run_sql_exec
+
+
 def sql_query(query, db='default'):
     pass
 
@@ -7,7 +10,7 @@ def sql_query_file(query_name=None, filename=None, db='default'):
 
 
 def sql_exec(sql, db='default'):
-    pass
+    return run_sql_exec(sql, db)
 
 
 def sql_exec_file(exec_name=None, filename=None, db='default'):

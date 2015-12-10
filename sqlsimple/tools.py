@@ -48,13 +48,15 @@ class SqlSimpleCommand(object):
 
 class InitDb(SqlSimpleCommand):
     parser = argparse.ArgumentParser()
-    parser.add_argument('--database', required=False)
+    parser.add_argument('--database', default='default', required=False)
 
     def __call__(self, args):
         args = vars(self.parser.parse_args(args))
         with open('schema.sql') as f:
-            sql = f.read()
-        return sql_exec(sql, db=args['database'])
+            sql_script = f.read()
+        ss = [s.strip() for s in sql_script.split(';') if s.strip() != '']
+        for statement in ss:
+            sql_exec(statement, db=args['database'])
 
 
 class Init(SqlSimpleCommand):
