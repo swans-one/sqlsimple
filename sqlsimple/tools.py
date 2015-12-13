@@ -42,11 +42,21 @@ def help_text(commands, args):
 
 
 class SqlSimpleCommand(object):
+    """Base class for commands
+    """
     def help_text(self):
         self.parser.print_help()
 
 
 class InitDb(SqlSimpleCommand):
+    """Initialize the database.
+
+    - Run the statements in the schema
+    - Load any fixtures
+    - Set up the migrations table
+    - Mark any migrations as run
+    """
+    # TODO: get the schema from the configuration
     parser = argparse.ArgumentParser()
     parser.add_argument('--database', default='default', required=False)
 
@@ -60,6 +70,14 @@ class InitDb(SqlSimpleCommand):
 
 
 class Init(SqlSimpleCommand):
+    """Generate the structure of the project.
+
+    - Create blank configuration files
+      - databases.cfg
+      - sqlsimple.cfg
+    - Create schema.sql
+    - Create migrations directory
+    """
     parser = argparse.ArgumentParser()
 
     def __call__(self, args):
@@ -67,6 +85,11 @@ class Init(SqlSimpleCommand):
 
 
 class MakeMigration(SqlSimpleCommand):
+    """Setup blank files for a migration in the migration directory.
+
+    - #####_name_forward.sql
+    - #####_name_backward.sql
+    """
     parser = argparse.ArgumentParser()
     parser.add_argument('database')
 
@@ -74,6 +97,17 @@ class MakeMigration(SqlSimpleCommand):
         pass
 
 
+class Migrate(SqlSimpleCommand):
+    """Run migrations
+    """
+    parser = argparse.ArgumentParser()
+
+    def __call__(self, args):
+        pass
+
+
+# Initialize the callables used for these commands
 init_db = InitDb()
 init = Init()
 make_migration = MakeMigration()
+migrate = Migrate()
