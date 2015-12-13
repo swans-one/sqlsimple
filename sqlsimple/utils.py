@@ -7,7 +7,7 @@ from sqlsimple.configuration import CONFIGURATION
 def run_sql_query(sql, db):
     """Execute and return results for a query.
     """
-    with get_cursor(db_config) as cur:
+    with get_cursor(db) as cur:
         cur.execute(sql)
         cols = [col[0] for col in cur.description]
         Result = namedtuple('Result', cols)
@@ -18,7 +18,7 @@ def run_sql_query(sql, db):
 def run_sql_exec(sql, db):
     """Execute a sql statement, but do not return results from a query.
     """
-    with get_cursor(db_config) as c:
+    with get_cursor(db) as c:
         results = c.execute(sql)
     return results
 
