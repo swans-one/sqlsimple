@@ -4,6 +4,11 @@ import os
 
 
 def get_and_parse_config():
+    """Read configuration from sqlsimple config files.
+
+    - sqlsimple.cfg
+    - databases.cfg
+    """
     db_config_location = os.environ.get('SQLSIMPLEDATABASES', 'databases.cfg')
     db_config = configparser.ConfigParser()
     db_config.read(db_config_location)

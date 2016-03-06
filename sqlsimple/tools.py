@@ -4,6 +4,7 @@ import argparse
 
 from sqlsimple.configuration import CONFIGURATION
 from sqlsimple.operations import sql_exec
+# TODO Add help to all argument parsers
 
 
 def sqlsimple():
@@ -48,6 +49,21 @@ class SqlSimpleCommand(object):
         self.parser.print_help()
 
 
+class Init(SqlSimpleCommand):
+    """Generate the structure of the project.
+
+    - Create blank configuration files
+      - databases.cfg
+      - sqlsimple.cfg
+    - Create schema.sql
+    - Create migrations directory
+    """
+    parser = argparse.ArgumentParser()
+
+    def __call__(self, args):
+        pass
+
+
 class InitDb(SqlSimpleCommand):
     """Initialize the database.
 
@@ -69,15 +85,7 @@ class InitDb(SqlSimpleCommand):
             sql_exec(statement, db=args['database'])
 
 
-class Init(SqlSimpleCommand):
-    """Generate the structure of the project.
-
-    - Create blank configuration files
-      - databases.cfg
-      - sqlsimple.cfg
-    - Create schema.sql
-    - Create migrations directory
-    """
+class UpdateDb(SqlSimpleCommand):
     parser = argparse.ArgumentParser()
 
     def __call__(self, args):
@@ -107,7 +115,8 @@ class Migrate(SqlSimpleCommand):
 
 
 # Initialize the callables used for these commands
-init_db = InitDb()
 init = Init()
+init_db = InitDb()
+update_db = UpdateDb()
 make_migration = MakeMigration()
 migrate = Migrate()
