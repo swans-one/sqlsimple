@@ -1,0 +1,14 @@
+# todo.org
+#
+# This file keeps track of what developement needs to be done. Top
+# level headings are works in progress. Once they're completed, they
+# can be removed.
+#
+# This information may eventually make sense in an issues tracker, but
+# I'm doing solo development for now.
+
+* Figure out where we stand [0/4]
+- [ ] create a notes.org file
+- [ ] Write down all the commands that we want
+- [ ] Write down all the library funtions we want
+- [ ] Write down how we want extensions to work
