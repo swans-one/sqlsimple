@@ -1,0 +1,83 @@
+# This file is not documentation of how the system actually works, but
+# how we're thinking about it, and how we want it to work. It should
+# be removed before a 1.0 release.
+
+* Project Goals
+SqlSimple lets you manage an interact with a database by in your
+python projects, primarily by letting you write sql. All of the
+following tasks can be managed through sql:
+
+- Query definition
+- Schema management
+- Migration definition
+- CRUD operations
+- Stored procedure management
+
+SqlSimple does aim to be the only library you need to manage the
+database component of an application. It provides command line tools
+to handle:
+
+- Configuring and storing database connections
+- Defining a database schema
+- Creating databases
+- Defining schema / data migrations
+- Testing migrations
+- Tracking migrations
+- Running migrations
+- Creating stored procedures
+- Setting up fixtures
+- Maintaining test fixtures
+
+SqlSimple also provides a library of functions to be used in your
+python project to make
+
+The `sqlsimple` library does not map data into python objects, but
+rather provides a simple interface from python for reading data from
+query into a simple records (just lists of namedtuples).
+
+* Commands
+** What Are They Called
+- sqlsimple
+  - help
+  - init
+  - init-db
+  - make-migration
+  - migrate
+  - test-migration
+  - migrate-status
+
+** What Are They For
+These command line tools make it easy to work in common patterns for a
+database-backed application. They include both deployment and
+development tools.
+
+Any of the deployment focused tools are designed to be idempotent
+given the state of the configuration files and relevant sql files.
+
+** What does each do
+*** help
+- Print some help text.
+
+*** init
+- Create the configuration files 
+- Create project structure.
+
+*** init-db
+- Create the database 
+- Create relevant tables.
+- Add fixture data
+
+*** make-migration
+- Create a shell for a schema/data migration
+  - Forward and reverse
+
+*** test-migration
+- Verify if running a migration leaves the schema unchanged
+- ?? Possibly report on what data changes (db introspection required) ??
+
+*** list-migration
+- Show what migrations need to be applied
+
+*** migrate
+- Run all unapplied migrations
+- Allow reverse migrations

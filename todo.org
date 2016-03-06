@@ -7,8 +7,8 @@
 # This information may eventually make sense in an issues tracker, but
 # I'm doing solo development for now.
 
-* Figure out where we stand [0/4]
-- [ ] create a notes.org file
+* Figure out where we stand [1/4]
+- [X] create a notes.org file
 - [ ] Write down all the commands that we want
 - [ ] Write down all the library funtions we want
 - [ ] Write down how we want extensions to work
