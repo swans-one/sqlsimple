@@ -7,8 +7,12 @@
 # This information may eventually make sense in an issues tracker, but
 # I'm doing solo development for now.
 
-* Figure out where we stand [1/4]
+* TODO Figure out where we stand [3/5]
 - [X] create a notes.org file
-- [ ] Write down all the commands that we want
-- [ ] Write down all the library funtions we want
-- [ ] Write down how we want extensions to work
+- [X] Write down all the commands that we want
+- [X] Write down library funtions we want
+- [ ] Write down how we want plugins/extensions to work
+- [ ] What conventions / configuration do we require
+* TODO Set up a test-runner
+* TODO Elaborate on routing framework
+* TODO Document conventions / configuration

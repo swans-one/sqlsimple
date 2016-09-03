@@ -35,7 +35,7 @@ The `sqlsimple` library does not map data into python objects, but
 rather provides a simple interface from python for reading data from
 query into a simple records (just lists of namedtuples).
 
-* Commands
+* Commands (Tools)
 ** What Are They Called
 - sqlsimple
   - help
@@ -81,3 +81,31 @@ given the state of the configuration files and relevant sql files.
 *** migrate
 - Run all unapplied migrations
 - Allow reverse migrations
+
+* Library Functions
+- query
+- exec
+- exec_many
+
+* General thoughts / questions
+
+
+* Extensions / Plugins
+We want other applications to be able to define their own schemas /
+migrations.
+
+** TODO Should these be namespaced appropriately?
+- rails doesn't namespace package tables
+- Django does
+
+** Potential Approaches
+- Django like "Installed Apps"
+  - convention for finding migrations / schemas within packages
+
+- Automatically pull from installed packages
+
+- Require a command to be run to include them
+
+* Future Direction (Other libraries)
+- A routing framework that uses sqlsimple
+- An Auth system that uses sqlsimple as a backend
